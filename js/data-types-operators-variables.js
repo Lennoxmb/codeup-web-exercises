@@ -2,7 +2,7 @@ let a = 1;
 let b = a++;
 let c = ++a;
 console.log(a)
-// 1, 2, 2
+// 1, 1, 3, a++ happens AFTER the post, c, a=2, b=1, so c=3
 
 let d = "hello";
 let e = false;
@@ -16,39 +16,39 @@ console.log(e)
 let perplexed; // perplexed is undefined (no value is assigned)
 perplexed + 2;
 console.log(perplexed)
-// undefined
+// NaN can't add something to nothing
 
-let price = 2.7;
+let price = parseFloat("2.7");
 price.toFixed(2);
 console.log(price)
 //2.70
 
 isNaN(0)
-//number
+//false
 isNaN(1)
-//number
+//false
 isNaN("")
-// undefined
+// false
 isNaN("string")
-//string
+//true
 isNaN("0")
-//string
+//false
 isNaN("1")
-//string
+//false
 isNaN("3.145")
-//string
+//false
 isNaN(Number.MAX_VALUE)
-//nan
+//false
 isNaN(Infinity)
-//nan
+//false
 isNaN("true")
-//string
+//true
 isNaN(true)
-//boolean
+//false
 isNaN("false")
-//tring
+//true
 isNaN(false)
-//boolean
+//false
 // to illustrate why the isNaN() function is needed:
 NaN == NaN
 // nan does not equal nan
@@ -68,7 +68,7 @@ NaN == NaN
 !!1
 //true
 !!-1
-//false
+//true
 !!0.1
 //true
 !!"hello"
@@ -137,11 +137,14 @@ if (password.length>5&&username.length<20)
     console.log("accepted")
 else
     console.log("Need shorter user")
-if (password.indexOf(' '))
+if (password.indexOf(""))
     console.log("No white space")
 else
     console.log("accepted")
-
+if (password.indexof(username))
+    console.log("No using username")
+else
+    console.log ("accepted.")
 
 
 
