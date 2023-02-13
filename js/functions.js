@@ -114,7 +114,7 @@ const applyDiscount = (bill, discount) => {
 };
 
 let originalPrice = 100;
-let discountPercent = .2; // 20%
-console.log(applyDiscount(originalPrice, discountPercent)); // 80
+let discountPercent = .2;
+console.log(applyDiscount(originalPrice, discountPercent));
 
-console.log(applyDiscount(45.99, 0.12)); // 40.4712
+console.log(applyDiscount(45.99, 0.12));
