@@ -2,7 +2,7 @@
 
 /* ########################################################################## */
 
-/*
+/**
  * TODO:
  * Create a function named `analyzeColor` that accepts a string that is a color
  * name as input. This function should return a message which relates to the
@@ -21,25 +21,26 @@
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
-// const analyzeColor = prompt("What is your favorite color?");
-//     let analyzeColors=analyzeColor.toLowerCase();
-//     if (analyzeColors === 'blue') {
-//         alert('That\'s the color of the sea!');
-//     } else if (analyzeColors === 'purple') {
-//         alert(`That\'s the color of Royalty!`);
-//     } else if (analyzeColors === 'red') {
-//         alert('That\'s the color of FIRE!!');
-//     } else if (analyzeColors === 'orange') {
-//         alert('That\'s the color of the Dragon Balls!');
-//     } else if (analyzeColors === 'yellow') {
-//         alert('That\'s what color Codey is!');
-//     } else if (analyzeColors === 'green') {
-//         alert('That\'s what color nature is!');
-//     } else if (analyzeColors === 'mint') {
-//         alert('That\'s my favorite color ever!');
+// const analyzeColor = (color) => {
+//     let colorLower = color.toLowerCase();
+//     if (colorLower === 'blue') {
+//         return ('That\'s the color of the sea!');
+//     } else if (colorLower === 'violet') {
+//         return (`That\'s the color of Royalty!`);
+//     } else if (colorLower === 'red') {
+//         return ('That\'s the color of FIRE!!');
+//     } else if (colorLower === 'orange') {
+//         return ('That\'s the color of the Dragon Balls!');
+//     } else if (colorLower === 'yellow') {
+//         return ('That\'s what color Codey is!');
+//     } else if (colorLower === 'green') {
+//         return ('That\'s what color nature is!');
+//     } else if (colorLower === 'mint') {
+//         return ('That\'s my favorite color ever!');
 //     } else {
-//         alert('I\'m not sure about that one... ')
-// };
+//         return (`I'm not sure about ${color}... `)
+//     }
+// }
 
 
 // Don't change the next two lines!
@@ -47,69 +48,59 @@
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
-// let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-// let randomColor = colors[Math.floor(Math.random() * colors.length)];
+// const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+// const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-/*
- * TODO: still need to do this one
+/**
+ * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
-// function analyzeColorRandom (random, colors){
-//     return analyzeColorRandom
-// }
-// console.log(analyzeColorRandom)
-/*
+// can also do in one-step
+    //console.log(analyzeColor(randomColor)
+// let colorMessage = analyzeColor(randomColor);
+// console.log(colorMessage)
+
+/**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-// const analyzeColor = (enteredColor) => {
+// Don't need break if "return"ed
+// const analyzeColors = (enteredColor) => {
 //     switch (enteredColor) {
 //         case "blue":
-//             alert('That\'s the color of the sea!');
-//             break;
+//           return('That\'s the color of the sea!');
 //         case 'purple':
-//             alert(`That\'s the color of Royalty!`);
-//             break;
+//             return(`That\'s the color of Royalty!`);
 //         case 'red':
-//             alert('That\'s the color of FIRE!!');
-//             break;
+//             return('That\'s the color of FIRE!!');
 //         case 'orange':
-//             alert('That\'s the color of the Dragon Balls!');
-//             break;
+//             return('That\'s the color of the Dragon Balls!');
 //         case 'yellow':
-//             alert('That\'s what color Codey is!');
-//             break;
+//             return('That\'s what color Codey is!');
 //         case 'green':
-//             alert('That\'s what color nature is!');
-//             break;
+//             return('That\'s what color nature is!');
 //         case 'mint':
-//             alert('That\'s my favorite color ever!');
-//             break;
+//             return('That\'s my favorite color ever!');
 //         default:
-//             alert("what is that?");
+//             return("what is that?");
 //     }
 // }
-//
-// let analyzedColor = prompt("What is your favorite color?");
-// analyzeColor (analyzedColor)
-/*
+
+// const analyzedColor = prompt("What is your favorite color?");
+// console.log(analyzeColors (analyzedColor))
+/**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
-// const analyzeColor = prompt("What is your favorite color?");
-// let analyzeColors=analyzeColor.toLowerCase();
-//     if (analyzeColors === "blue" || analyzeColors === "purple" || analyzeColors === "green") {
-//         alert(`${analyzeColors} is an amazing color!`);
-//     } else {
-//         alert('I\'m not sure about that color.')
-//     }
+// const usedColor = prompt(`what is your favorite color?`)
+// alert(analyzeColor(usedColor.toLowerCase()))
 
 /* ########################################################################## */
 
-/*
+/**
  * TODO:
  * Suppose there's a promotion in Walmart, each customer is given a randomly
  * generated "lucky number" between 0 and 5. If your lucky number is 0 you have
@@ -128,31 +119,25 @@
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-const calculateTotal= (lucky, total) => {
-    if (lucky = 1) {
-       let discountTotal = total - (total * .10)
+
+const calculateTotal= (total, lucky)  => {
+    let totalNumber = parseFloat(total);
+    let luckyNumber = parseFloat(lucky);
+    if (luckyNumber === 0) {
+        return totalNumber;
+    } else if (luckyNumber === 1) {
+        return (totalNumber * .1);
+    } else if (luckyNumber === 2) {
+        return (totalNumber * .25);
+    } else if (luckyNumber === 3) {
+        return (totalNumber * .35);
+    } else if (luckyNumber === 4) {
+        return (totalNumber * .5);
     } else {
-        console.log(`eh`)
+        return `It's free!`
     }
 }
-
-
-//     calculateTotal(1, 100)
-//     switch (calculateTotal) {
-//         case lucky = 0 :
-//             console.log(0 - total);
-//             break;
-//         case lucky == 1 :
-//             let discount = 0.10
-//             console.log(total - (total * discount));
-//             break;
-//         default:
-//             console.log("we don't have that");
-//     }
-// }
-// console.log(calculateTotal(1, 100))
-
-
+console.log(calculateTotal(100, 4))
 
 
 /**
@@ -164,7 +149,13 @@ const calculateTotal= (lucky, total) => {
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+// const luckyNumber = Math.floor(Math.random() * 6);
+//
+// let bill = parseFloat(prompt(`How much was your bill?`));
+// let discountPrice = calculateTotal(luckyNumber, bill)
+// alert(`your lucky number was ${luckyNumber}. Your total bill was ${dollaDollaBills(bill)}, so your price after the discount is ${dollaDollaBills(discountPrice)}`)
+
+
 
 /**
  * TODO:
@@ -184,3 +175,25 @@ const calculateTotal= (lucky, total) => {
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+const wantedNumber = confirm(`would you like to enter a number?`);
+if (wantedNumber){
+   const userNumber = parseFloat(prompt("enter a number"));
+   if (isNumberNotNaN(userNumber)){
+    if (userNumber % 2 === 0) {
+        alert("that number is even");
+    } else {
+        alert(`That number is odd`);
+    }
+    alert('that number plus 100 is ' + (userNumber + 100))
+    if (userNumber < 0){
+        alert(`that number is negative`);
+    } else if (userNumber > 0) {
+        alert(`that number is positive`);
+    } else {
+        alert(`that number is not positive or negative`);
+    }
+} else {
+   alert('input is an incorrect datatype')
+   }
+}
