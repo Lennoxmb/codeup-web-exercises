@@ -17,6 +17,7 @@ function randomNumber(min, max) {
 }
 
 
+
 let conesInventory = randomNumber(50, 100);
 
 do {
