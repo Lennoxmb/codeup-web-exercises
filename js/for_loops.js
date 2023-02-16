@@ -6,6 +6,17 @@ const showMultiplicationTable = (num) => {
 }
 showMultiplicationTable(3)
 
+// jason version
+const multipleTable = (number) => {
+    let table = '';
+    for (let i = 1; i <= 10; i++){
+        let daMath = parseInt((number) * i);
+        let output = `${number} x ${i} = ${daMath}\n`;
+        table = table + output;
+    }
+    console.log(table)
+}
+multipleTable();
 
 //2. for loop
 function randomNumber(min, max) {
@@ -27,9 +38,20 @@ for (let i = 1; i <= 9; i++) {
     let output = `${i}`.repeat(i)
     console.log(output)
 }
+//jasons loop in a loop
+for(let i = 0; i < 9; i++){
+    let output = `${i+1}`;
+    for(let j = i; j > 0; j--){
+        let moNumbers = `${i+1}`;
+        output += moNumbers
+    }
+    console.log(output);
+}
+
+
 
 //5
-for (let i = 100; i <= 100; i -= 5) {
+for (let i = 100; i >= 0; i -= 5) {
     if (i === 0) break;
     console.log(i)
 }
