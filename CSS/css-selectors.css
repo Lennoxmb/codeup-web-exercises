@@ -86,7 +86,6 @@ main {
     aspect-ratio: 4/3;
     object-fit: cover;
     transition: all ease .3s;
-    filter: grayscale(0);
 }
 
 /*.photos-wrapper .photo-wrapper:first-child {*/
@@ -101,6 +100,18 @@ main {
 /*    filter: grayscale(0);*/
 /*}*/
 
-.nerve {
-    font-family: Mynerve;
+:root {
+    --primary-color: #000;
+    ---cta-color: red;
+    --dark-grey: #2d2d2d;
+    --box-shadow: 0px 0px 20px -10px #000;
+
+}
+
+
+.example{
+    box-shadow: var(--box-shadow);
+    perspective: 91px;
+    perspective-origin: center;
+
 }
