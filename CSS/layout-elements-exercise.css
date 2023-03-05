@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 * {
     font-family: 'Roboto-thin', sans-serif;
-    color: #605f5f;
+    color: #6D6D6D;
 }
 #row-center{
     display: flex;
@@ -10,9 +10,12 @@
 
 header {
     height: 100px;
+    box-shadow: #2d2d2d;
+    position: relative;
+    z-index: 2;
 }
 button {
-    background-color: #a1a1a1;
+    background-color: #979797;
     border: none;
     color: white;
     padding: 5px 25px;
@@ -20,7 +23,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    border-radius: 6px;
+    border-radius: 3px;
 }
 
 .meat{
@@ -52,7 +55,7 @@ h3 {
 }
 
 .section1 {
-    background-color: #e1e1e1;
+    background-color: #ECECEC;
     height: 700px;
 }
 
@@ -77,6 +80,12 @@ h3 {
     border-radius: 50%;
 }
 
+.box {
+    border-radius: 3px;
+    filter: drop-shadow(5px 5px 5px #737373);
+}
 
-
+.section-text {
+    max-width: 500px;
+}
 
