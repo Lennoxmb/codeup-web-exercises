@@ -1,0 +1,29 @@
+fieldset {
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+/*.fieldset1 {*/
+/*    border: solid 1px red;*/
+/*}*/
+
+input[type="checkbox"] ~ label {
+    margin-left: 10px;
+}
+
+fieldset:first-of-type div.input-wrapper {
+    position: relative;
+    right: 3.5%;
+}
+
+fieldset:first-of-type div.input-wrapper:first-of-type {
+    margin-bottom: 20px;
+}
+
+.email-align {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}

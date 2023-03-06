@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="CSS/resets.css">
+    <link rel="stylesheet" href="CSS/layout.css">
+    <link rel="stylesheet" href="CSS/forms.css">
+
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="column align-center justify-center">
+                <h1>Register with Us</h1>
+            </div>
+        </div>
+        <div class="row align-center justify-center">
+            <div>
+                <form method="get" action="https://request-inspector.glitch.me">
+                    <fieldset class="fieldset1">
+                        <legend><h4>Log In</h4></legend>
+                        <div class="row">
+                            <div class="column align-center">
+                                <div class="input-wrapper email-align">
+                                    <label for="email">Email:</label>
+                                    <input type="text" id="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="input-wrapper email-align">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4><label for="comments">Bio:</label></h4></legend>
+                        <textarea name="comments" id="comments" cols="48" rows="10" placeholder="Tell us about you!"></textarea><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4>How did you hear about us?</h4></legend>
+                        <div>
+                            <input type="checkbox" name="hearAboutUs" value="billboard" id="billboard">
+                            <label for="billboard">Billboard</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hearAboutUs" value="radio advertisement" id="radio advertisement">
+                            <label for="radio advertisement">Radio Advertisement</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hearAboutUs" value="internet advertisement" id="internet advertisement">
+                            <label for="internet advertisement">Internet Advertisement</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hearAboutUs" value="other" id="other">
+                            <label for="other">Other</label>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4><label for="browser">Which Internet browser are you using?</label></h4></legend>
+                        <select name="browser" id="browser">
+                            <option value="Google Chrome">Chrome</option>
+                            <option value="Firefox">Firefox</option>
+                            <option value="Safari">Safari</option>
+                            <option value="Microsoft Edge">Edge</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </fieldset>
+
+                    <div class="row align-center justify-center">
+                        <input type="submit" value="Submit Form">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
