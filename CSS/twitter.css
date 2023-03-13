@@ -51,10 +51,9 @@ svg {
     border-radius: 25px;
 }
 
-/*header {*/
-/*    color: white;*/
-/*    transparent;*/
-/*}*/
+header {
+    background-color: rgba(255, 255, 255, 0.6);
+}
 
 .avatar-wrapper {
     height: 100px;
@@ -114,3 +113,34 @@ hr {
     border-radius: 50%;
     float: left;
 }
+
+.text-post {
+    width: 75%;
+    word-break: break-all;
+    flex-wrap: wrap;
+}
+
+.search {
+    background: #EFF3F4;
+    border: 1px solid transparent;
+    outline: none;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    border-radius: 99px;
+    font-color: #7a7a7a;
+    transition: all 0.3s ease 0s;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+    margin-top: 2px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+/*@media screen (max-width: 1265px) {*/
+/*    .menu-item p {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
