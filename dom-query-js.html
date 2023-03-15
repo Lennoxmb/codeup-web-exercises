@@ -34,47 +34,86 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<div class="container">
+    <div class="row full-width">
+        <button id="btn1"> button one</button>
+        <button id="btn2"> button two</button>
+        <button id="btn3"> button three</button>
+        <button id="btn4"> button four</button>
+    </div>
+</div>
+
 <script>
     (function() {
         "use strict";
         // TODO: Uncomment next line and get the main header element by id
             let mainHeader = document.querySelector('#main-header');
+        let btn1 = document.getElementById('btn1');
+        let mainHeaderText = mainHeader.innerText;
+        btn1.addEventListener('click', function(event){
+            if (mainHeader.innerText === mainHeaderText) {
+                mainHeader.innerHTML= "JavaScript is Cool";
+            } else {
+                mainHeader.innerText = mainHeaderText
+            }
+
+        });
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-            mainHeader.innerHTML= "JavaScript is Cool";
+        //     mainHeader.innerHTML= "JavaScript is Cool";
 
         // TODO: Uncomment the next line and get the sub header element by id
+
              let subHeader = document.querySelector('#sub-header');
+             let btn2 = document.getElementById('btn2');
+        btn2.addEventListener('click', function(event){
+            subHeader.style.color = 'blue';
+        });
 
         // TODO: Set the text color of subHeader to blue
-            subHeader.style.color = 'blue'
+        //     subHeader.style.color = 'blue'
 
         // TODO: Uncomment the next line and get all list items
             let listItems = document.querySelectorAll('li');
+        let btn3 = document.getElementById('btn3');
+        btn3.addEventListener('click', function(event){
+            listItems.forEach(function(element, index){
+                if (index % 2 === 1) {
+                    element.style.color = 'grey'
+                }
+                let colorOne = document.querySelector('[data-dbid="1"]');
+                colorOne.style.color = 'blue'
+            })
+        });
 
         // TODO: Set text color on every other list item to grey
-        listItems.forEach(function(element, index){
-            if (index % 2 === 1) {
-                element.style.color = 'grey'
-            }
-            // if(element.getAttribute('data-dbid') === "1") {
-            //     element.style.color = 'blue'
-            // }
-        })
+        // listItems.forEach(function(element, index){
+        //     if (index % 2 === 1) {
+        //         element.style.color = 'grey'
+        //     }
+        // })
 
         // TODO: Set text color of li with dbid = 1 to blue
-             let colorOne = document.querySelector('[data-dbid="1"]');
-                colorOne.style.color = 'blue'
+        //      let colorOne = document.querySelector('[data-dbid="1"]');
+        //         colorOne.style.color = 'blue'
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         let subParagraphs = document.querySelectorAll('.sub-paragraph');
+        let btn4 = document.getElementById('btn4');
+        btn4.addEventListener('click', function(event){
+            subParagraphs.forEach(function(element, index){
+                if (index === 0){
+                    element.innerText = "Mission Accomplished!";
+                }
+            });
+        });
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs.forEach(function(element, index){
-            if (index === 0){
-                element.innerText = "Mission Accomplished!";
-            }
-        });
+        // subParagraphs.forEach(function(element, index){
+        //     if (index === 0){
+        //         element.innerText = "Mission Accomplished!";
+        //     }
+        // });
 
 
     })();
