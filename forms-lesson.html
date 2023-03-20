@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms Lecture</title>
+    <link rel="stylesheet" href="css/resets.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container grow justify-center">
+        <div class="row">
+            <div class="column align-center justify-center">
+                <h1>Forms Lecture</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column align-center justify-center">
+                <form method="post" action="https://request-inspector.glitch.me">
+                    <fieldset>
+                        <legend><h4>Log In</h4></legend>
+                        <div class="row">
+                            <div class="column justify-center align-center">
+                                <div class="input-wrapper">
+                                    <label for="username">Username:</label>
+                                    <input type="text" id="username" name="username">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="password">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4><label for="comments">Please Leave Your Comments:</label></h4></legend>
+                        <textarea name="comments" id="comments" cols="48" rows="10"></textarea><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4>Marvel or DC?</h4></legend>
+                        <div class="input-wrapper">
+                            <label for="marvel">Marvel:</label>
+                            <input type="radio" name="marveldc" value="Marvel" id="marvel">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="dc">DC:</label>
+                            <input type="radio" name="marveldc" value="DC" id="dc">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4>Choose your extras:</h4></legend>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Provolone" id="provolone">
+                            <label for="provolone">Provolone</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Cheddar" id="cheddar">
+                            <label for="cheddar">Cheddar</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="American Cheese" id="american">
+                            <label for="american">American Cheese</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Swiss" id="swiss">
+                            <label for="swiss">Swiss Cheese</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Pepper Jack" id="pepperJack">
+                            <label for="pepperJack">Pepper Jack</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Jalapenos" id="jalapenos">
+                            <label for="jalapenos">Sliced Jalapenos</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Mushrooms" id="mushrooms">
+                            <label for="mushrooms">Sauteed Mushrooms</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Onions" id="onions">
+                            <label for="onions">Grilled Onions</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Bacon" id="bacon">
+                            <label for="bacon">Extra Bacon</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="checkbox" name="extras" value="Guacamole" id="guacamole">
+                            <label for="guacamole">Guacamole</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4><label for="destination">Choose your destination:</label></h4></legend>
+                        <select name="destination" id="destination">
+                            <option value="Hawaii">Hawaii</option>
+                            <option value="Yucatan">Yucatan</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Florida">Florida</option>
+                            <option value="California">California</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h4>Grab Bag of Inputs</h4></legend>
+                        <div class="input-wrapper">
+                            <label for="reset">Reset input:</label>
+                            <input type="reset" id="reset">
+                        </div>
+                        <div class="input-wrapper">
+                            <!-- date can take min and max attributes -->
+                            <label for="date">Date input:</label>
+                            <input type="date" name="date" id="date">
+                        </div>
+                        <div class="input-wrapper">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="pickColor">Color picker:</label>
+                            <input type="color" name="pickColor" id="pickColor">
+                        </div>
+                        <div class="input-wrapper">
+                            <!-- range can take min, max, and step attributes -->
+                            <label for="evaluation">Range input:</label>
+                            <input type="range" name="evaluation" id="evaluation">
+                        </div>
+                        <div class="input-wrapper">
+                            <!-- number can take min, max, and step attributes -->
+                            <label for="number">Number input:</label>
+                            <input type="number" name="number" id="number">
+                        </div>
+                        <!-- email, tel, and url inputs are predominantly mobile-oriented -->
+                    </fieldset>
+                    <div class="row justify-center">
+                        <input type="submit" value="Submit Form">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -491,6 +491,25 @@ function sortCarArray(carsArray) {
  * Notice that num is also included in the returned array.
  */
 
+// this for loop is for practice
+// function arrayOfMultiples(num, len){
+//     let arrayHelp = [];
+//     for(let i = 1; arrayHelp.length < len; i++){
+//         arrayHelp.push(num * i)
+//     } return arrayHelp
+// }
+
+function arrayOfMultiples(num, len){
+    let arrayHelp = [];
+    let i = 1;
+    while (arrayHelp.length < len){
+        arrayHelp.push(num * i)
+        i++;
+    } return arrayHelp
+}
+
+
+
 /**
  * Purge and Organize
  * Given an array of numbers, write a function named uniqueSort that returns an array that...
@@ -503,3 +522,46 @@ function sortCarArray(carsArray) {
  * uniqueSort([1, 4, 4, 4, 4, 4, 3, 2, 1, 2]) ➞ [1, 2, 3, 4]
  * uniqueSort([6, 7, 3, 2, 1]) ➞ [1, 2, 3, 6, 7]
  */
+
+function uniqueSort(arr){
+    let sorted = [];
+    for(let i = 0; i < arr.length; i++ ){
+        if (i === 0){
+            sorted.push(arr[i])
+        } else {
+
+        }
+    }
+}
+
+//doing for statment, add first value, check back -i-1 but might need while loop?? death
+//def uniqueSort(arr):
+//    sorted = []
+//    for (let i = 0, i < arr.length, i++)
+//        if i === 0:
+//            sorted.push(arr[i])
+//        else:
+//            let num = i - 1
+//            if arr[i] < sorted[num]:
+//                num--
+//                while arr[i] < sorted[num] && num >=0:
+//                        num --
+//                sorted.push(arr[num+1])
+//             else:
+//                 sorted.push(arr[i])
+// arr = [2, 40, 1, 5]
+// sorted = [2]
+// arr[1]
+// sorted[0]
+// Remeny — Today at 9:37 PM
+// sorted [2, 40]
+// arr[2]
+// sorted[0], sorted[1]
+
+/* Write a code that will print each Programming Language, plus "is a nice programming language."
+languages = ['bash', 'python', 'R', 'Java', 'JavaScript']*/
+let languages = ['bash', 'python', 'R', 'Java', 'JavaScript']
+
+for(let i = 0; i < languages.length; i++){
+    console.log(`${languages[i]} is a nice programming language.`)
+}
