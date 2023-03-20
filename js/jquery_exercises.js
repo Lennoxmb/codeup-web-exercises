@@ -13,6 +13,22 @@
 //     'font-size': '20px',
 // })
 
-$('h1,p,li').css({
-    'background-color': '#00ffb7'
-})
+// $('h1,p,li').css({
+//     'background-color': '#00ffb7'
+// })
+$("h1").click(
+    function (){
+        $(this).css('background-color', 'red')
+    })
+$("p").dblclick(
+    function (){
+        $(this).css('font-size', '18px')
+    })
+$('li').hover(
+    function() {
+        $(this).css('background-color', 'red');
+    },
+    function() {
+        $(this).css('background-color', 'white');
+    }
+);
