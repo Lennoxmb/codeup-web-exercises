@@ -6,3 +6,27 @@
 .highlight {
     background-color: yellow;
 }
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 325px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    margin: 10px 20px;
+    background-color: saddlebrown;
+}
+.holdsFrames {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomSpace {
+    margin-bottom: 50px;
+}
+
+/*.img-wrapper {*/
+/*    width 100%;*/
+/*    background-image: url("/img/frame image.png");*/
+/*}*/
