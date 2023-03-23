@@ -1,0 +1,36 @@
+#todaysForecastBox {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 300px;
+
+}
+
+#todaysMoving {
+    display: flex;
+}
+
+.fivedayForecastBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 1 0 0;
+    align-items: end;
+    margin-bottom: 30px;
+ }
+
+.forecast {
+    padding: 10px;
+    margin: 5px 5px;
+    border: 1px solid black;
+    border-radius: 7px;
+    max-width: 200px;
+    width: 100%;
+
+}
+
+#formSearches {
+    display: flex;
+    flex-direction: row;
+}
