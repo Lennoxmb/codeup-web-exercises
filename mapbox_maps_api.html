@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map exercise</title>
+    <script src="js/keys.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="CSS/resets.css">
+    <link rel="stylesheet" href="CSS/layout.css">
+    <link rel="stylesheet" href="CSS/mapbox-map-api.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="column justify-center align-center text-center gap-10">
+                    <h1>map exercise</h1>
+                    <div id='map' style='width: 50%; height: 400px;'></div>
+                    <form class="column justify-center align-center text-center gap-10">
+                        <label for="zoom">Set zoom:</label>
+                        <input type="text" name="zoom" id="zoom">
+                        <button id="zoomSubmit">Zoom</button>
+                    </form>
+
+                    <form class="column justify-center align-center text-center gap-10">
+                        <label for="setMarker">Enter an address:</label>
+                        <input type="text" name="setMarker" id="setMarker">
+                        <button id="setMarkerButton">Set Marker</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <button id="hideMarkers">Hide Markers</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script>
+    mapboxgl.accessToken = MAPBOX_API_TOKEN;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
+        center: [-92.0451, 30.16048], // starting position [lng, lat]
+        zoom: 10, // starting zoom
+    });
+
+
+    // const fireyCrabMarker = new mapboxgl.Marker()
+    //     .setLngLat([-92.0451, 30.16048])
+    //     .addTo(map);
+    // const fireCrabPopup = new mapboxgl.Popup()
+    //     .setHTML('<p class="popup">Firey Crab!</p>' +
+    //         '<p>Provides a crawfish boil Louisiana style! If you don\'t like crawfish, hey have shrimp and crab insead!</p>');
+    // fireyCrabMarker.setPopup(fireCrabPopup);
+    // const broaddusMarker = new mapboxgl.Marker()
+    //     .setLngLat([-92.00454, 30.19619])
+    //     .addTo(map);
+    // const broaddusPopuup = new mapboxgl.Popup()
+    //     .setHTML('<p class="popup">Broaddus Burger!</p>' +
+    //         '<p>Has amazing burgers and fries that are best in the world</p>');
+    // broaddusMarker.setPopup(broaddusPopuup);
+    // const wattaMarker = new mapboxgl.Marker()
+    //     .setLngLat([-92.002185, 30.176411])
+    //     .addTo(map);
+    // const wattaPopup = new mapboxgl.Popup()
+    //     .setHTML('<p class="popup">Whataburger!</p>' +
+    //     '<p>Burger joint, more expensive than mcD but tastes much better</p>');
+    // wattaMarker.setPopup(wattaPopup);
+</script>
+<script src="js/mapbox-map-api.js"></script>
+</body>
+</html>
