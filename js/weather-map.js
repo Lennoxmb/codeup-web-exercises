@@ -4,14 +4,6 @@ function appendLeadingZeroes(n){
     }
     return n;
 }
-function dateFromTimeStamp(timeStamp) {
-    let dateTime = new Date(timeStamp * 1000);
-    let year = dateTime.getFullYear();
-    let month = appendLeadingZeroes(dateTime.getMonth() + 1);
-    let day = dateTime.getDate();
-    console.log(year, month, day)
-    return `${year}/${month}/${day}`;
-};
 
 
     function windCardinalDirection(degrees){
@@ -52,15 +44,8 @@ function dateFromTimeStamp(timeStamp) {
     return cardinalDirection;
 }
 
-function appendLeadingZeroes(n){
-    if(n <= 9){
-        return "0" + n;
-    }
-    return n;
-}
-
 const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-const daysOfMonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+
 
 function formatTime(timeStamp){
     let dateTime = new Date(timeStamp * 1000);
@@ -128,108 +113,136 @@ function average(array){
 //     console.log(data);
 // });
 
-//TODAYS SA WEATHER
-const SAlon = -98.48527;
-const SAlat = 29.423017;
-$.get(`https://api.openweathermap.org/data/2.5/weather?lat=${SAlat}&lon=${SAlon}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
-(data=>{
-//     console.log(data);
-// console.log(`The temp is:` + data.main.temp)
-    const time = new Date();
-    // console.log(months[time.getMonth()]);
-    // console.log(daysOfWeek[time.getDay()]);
-    // console.log(time.getDate());
-    // console.log(time.getHours());
-    // console.log(appendLeadingZeroes(time.getMinutes()));
-    $('#todaysDate').html(`<p>${daysOfWeek[time.getDay()]}<br>${months[time.getMonth()]}  ${time.getDate()}  ${time.getHours()}:${appendLeadingZeroes(time.getMinutes())}<br> Location: ${data.name}</p>`)
-    $('#weather').html(`<p>Weather: ${data.weather[0].description}<br>Current Temp: ${data.main.temp}<br>Feel like temp: ${data.main.feels_like}</p>`)
-    $('#details').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
-});
 
-// $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${SAlat}&lon=${SAlon}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done(data=>{
-//     console.log(data);
-//     data.list.forEach(forecast =>{
-//         console.log(forecast.dt_txt);
-//         console.log(forecast.weather[0].description)
+//
+// document.querySelector(".toggleNight").addEventListener('click', event=>{
+//     event.preventDefault();
+//     // $todaysMoving.css({
+//     //     'color': 'white',
+//     //     'background': 'rgba(0, 0, 0, 0.5);'
+//     // });
+//     mapboxgl.accessToken = MAPBOX_API_TOKEN;
+//     const map = new mapboxgl.Map({
+//         container: 'map', // container ID
+//         style: 'mapbox://styles/mapbox/dark-v11', // style URL
+//         center: [-98.4936300, 29.4241200], // starting position [lng, lat]
+//         zoom: 9, // starting zoom
+//
 //     })
-// });
+//
+// })
 
 
+//TODAYS WEATHER FUNCTION
 
+function todaysWeather(location) {
+    geocode(location, MAPBOX_API_TOKEN).then(coords => {
+        $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1]}&lon=${coords[0]}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
+        (data => {
+            const time = new Date();
+            $('#todaysDate').html(`<p>${daysOfWeek[time.getDay()]}<br>${months[time.getMonth()]}  ${time.getDate()}  ${time.getHours()}:${appendLeadingZeroes(time.getMinutes())}<br> Location: ${data.name}</p>`)
+            $('#weather').html(`<p>Weather: ${data.weather[0].description}<br>Current Temp: ${data.main.temp}<br>Feel like temp: ${data.main.feels_like}</p>`)
+            $('#details').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
+        });
+    });
+}
 
+todaysWeather(location)
 
-$.get(`https://api.openweathermap.org/data/2.5/forecast?`, {
-    APPID: OPEN_WEATHER_APPID,
-    lat: SAlat,
-    lon: SAlon,
-    units: "imperial"
-}).done(function(data) {
-    console.log(data);
-    let fiveDayForecast = '';
-    data.list.forEach((forecast, index) =>{
-        if (index % 8 === 0 && index !==0) {
-            const time = new Date(forecast.dt * 1000);
-            // console.log(time.getHours());
-            console.log(time.getTime());
-            console.log(time.getDay());
-            console.log(forecast.dt_txt);
-            console.log(forecast.weather[0].description);
-            console.log(forecast.main.temp);
-            fiveDayForecast +=  `
+//  FORECAST FUNCTION
+function weatherForecast(location) {
+    geocode(location, MAPBOX_API_TOKEN).then(coords => {
+        $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords[1]}&lon=${coords[0]}&appid=${OPEN_WEATHER_APPID}&units=imperial`)
+            .done(function (data) {
+            // console.log(data);
+            let fiveDayForecast = '';
+            data.list.forEach((forecast, index) => {
+                if (index % 8 === 0 && index !== 0) {
+                    const time = new Date(forecast.dt * 1000);
+                    // console.log(time.getHours());
+                    // console.log(time.getTime());
+                    // console.log(time.getDay());
+                    // console.log(forecast.dt_txt);
+                    // console.log(forecast.weather[0].description);
+                    // console.log(forecast.main.temp);
+                    fiveDayForecast += `
                             <div class="forecast" id="day${index}">
                               
-                              ${daysOfWeekAbbreviated[time.getDay()]}<br>${dateFromTimeStamp(forecast.dt)}<br>${forecast.weather[0].description}<br>${forecast.main.temp}
+                              ${daysOfWeekAbbreviated[time.getDay()]}<br>${dateFromTimeStamp(forecast.dt)}<br>Weather: ${forecast.weather[0].description}<br>Average Temp: ${forecast.main.temp}
                             </div>
                             `;
-
-            // $('#tomorrowDate').html(`${daysOfWeekAbbreviated[time.getDay()]}<br></br>${dateFromTimeStamp(forecast.dt)}`)
-            // // (`<p>${daysOfWeekAbbreviated[time.getDay()]}<br>${months[time.getMonth()]}  ${time.getDate()}<br>Location: ${data.city.name}</p>`)
-            // // $('#tomorrowDate').html(`<p>${forecast.weather[0].description}<br>${forecast.dt_txt}`)
-            // $('#tomorrowTemp').html(`<p>Weather: ${data.list[4].weather[0].description} High: ${data.list[4].main.temp_max}<br>Low: ${data.list[4].main.temp_min}</p>`)
-            // // $('#tomorrowMax').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
-        }
+                }
+            })
+            $('.fivedayForecastBox').html(fiveDayForecast);
+        });
     })
-    $('.fivedayForecastBox').html(fiveDayForecast);
-});
+}
+
+weatherForecast(location)
 
 
 
+//ZOOM FUNCTION
 document.getElementById("zoomSubmit").addEventListener('click', event => {
     event.preventDefault();
     map.setZoom(document.getElementById("zoom").value);
 });
 
-document.querySelector("#searchAddress").addEventListener('click', event=>{
-    // get the value of the input
-    // save the return of the geocode function -- it should be an array with lat/long
-    // use map.flyTo method
-    // save return of a  function that gets openweather forecast
-    // run a function that updates the forecast in the dom, using the return from openweather
-})
 
 
+new mapboxgl.Marker()
+    .setLngLat([-98.4936300, 29.4241200])
+    .addTo(map);
+
+
+//CLEAR MARKERS FUNCTION
 document.querySelector("#searchAddress").addEventListener('click', event=>{
     document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
         svg.style.display = 'none';
     })
 })
+
+//NEW ADDRESS FUNCTION
 document.getElementById("setMarkerButton").addEventListener('click', async (event)=>{
     event.preventDefault();
     const address = document.getElementById("setMarker").value;
+    // console.log(address);
+    todaysWeather(address);
+    weatherForecast(address)
     let coords = await geocode(address, MAPBOX_API_TOKEN);
     const newMarker = new mapboxgl.Marker()
         .setLngLat(coords)
         .addTo(map);
-    // map.setCenter(coords);
-
-    map.flyTo({
+        map.flyTo({
         center: coords,
-        zoom: 7,
-        speed: 1,
+        zoom: 9,
+        speed: 2,
         curve: 1,
         easing(t) {
             return t;
         }
+        });
     });
-});
 
+//CLEAR MARKERS FUNCTION
+document.querySelector("#searchAddress").addEventListener('click', event=>{
+    document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
+        svg.style.display = 'none';
+    })
+})
+
+// map.on('click', (e) => {
+// console.log(`A click event has occurred at ${e.lngLat}`);
+// let clickedLocation = e.lngLat
+// //reverse geo
+//     reverseGeocode({clickedLocation[0]: clickedLocation[1]}, MAPBOX_API_TOKEN).then(function(results) {
+//         // do something with results
+//     })
+// // console.log(e.lngLat)
+// //     todaysWeather(e.lngLat)
+// //     weatherForecast(e.lngLat)
+// //     new mapboxgl.Marker(e.lngLat)
+// });
+
+//ZOOM IN AND OUT BUTTONS
+map.addControl(new mapboxgl.NavigationControl());

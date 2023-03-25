@@ -11,11 +11,11 @@ let vanillaParent = document.querySelector('#paragraphParent')
 // $jqueryParent.css('color', 'red')
 
 //OR change a bunch
-// $jqueryParent.css({
-//     'fontWeight': '600',
-//     'textTransform': 'uppercase',
-//     'fontStyle': 'italic'
-// })
+$jqueryParent.css({
+    'fontWeight': '600',
+    'textTransform': 'uppercase',
+    'fontStyle': 'italic'
+})
 //adding classes with jquery
 // $jqueryParent.addClass('active');
 
