@@ -92,8 +92,7 @@ button {
     /*border-radius: 7px;*/
     max-width: 200px;
     width: 100%;
-    background: #009DFC;
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1.0) 50%, transparent 100%);
+
     color: purple;
 }
 
