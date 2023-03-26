@@ -21,7 +21,7 @@
           <input type="text" name="setMarker" id="setMarker" value="San Antonio, TX">
           <button id="setMarkerButton">Search Address</button>
 <!--          &lt;!&ndash; toggle button&ndash;&gt;-->
-<!--          <button class="toggleNight relative">Toggle Night Mode</button>-->
+<!--          <button id="toggleNight" class="relative">Toggle Night Mode</button>-->
         </form>
 
         <div class="column" id="todaysMoving">
@@ -48,7 +48,7 @@
     mapboxgl.accessToken = MAPBOX_API_TOKEN;
     const map = new mapboxgl.Map({
       container: 'map', // container ID
-      style: 'mapbox://styles/mapbox/dark-v11', // style URL
+      style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: [-98.4936300, 29.4241200], // starting position [lng, lat]
       zoom: 9, // starting zoom
     });

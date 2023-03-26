@@ -1,3 +1,7 @@
+(function () {
+
+
+
 function appendLeadingZeroes(n){
     if(n <= 9){
         return "0" + n;
@@ -188,8 +192,27 @@ document.getElementById("zoomSubmit").addEventListener('click', event => {
     map.setZoom(document.getElementById("zoom").value);
 });
 
+//CLEAR MARKERS FUNCTION
+    map.on('click', function(e) {
+        document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
+            svg.style.display = 'none';
+        })
+    })
 
 
+//map click
+let markers = [];
+map.on('click', function(e) {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].remove();
+    }
+    let marker = new mapboxgl.Marker()
+        .setLngLat(e.lngLat)
+        .addTo(map);
+    markers.push(marker);
+});
+
+//san antonio marker
 new mapboxgl.Marker()
     .setLngLat([-98.4936300, 29.4241200])
     .addTo(map);
@@ -224,25 +247,19 @@ document.getElementById("setMarkerButton").addEventListener('click', async (even
         });
     });
 
-//CLEAR MARKERS FUNCTION
-document.querySelector("#searchAddress").addEventListener('click', event=>{
-    document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
-        svg.style.display = 'none';
-    })
-})
 
-// map.on('click', (e) => {
-// console.log(`A click event has occurred at ${e.lngLat}`);
-// let clickedLocation = e.lngLat
-// //reverse geo
-//     reverseGeocode({clickedLocation[0]: clickedLocation[1]}, MAPBOX_API_TOKEN).then(function(results) {
-//         // do something with results
+
+
+// // //CLEAR MARKERS FUNCTION FOR MAP CLICK
+// document.querySelector("#searchAddress").addEventListener('click', event=>{
+//     document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
+//         svg.style.display = 'none';
 //     })
-// // console.log(e.lngLat)
-// //     todaysWeather(e.lngLat)
-// //     weatherForecast(e.lngLat)
-// //     new mapboxgl.Marker(e.lngLat)
-// });
+// })
 
-//ZOOM IN AND OUT BUTTONS
+
+
+    //ZOOM IN AND OUT BUTTONS
 map.addControl(new mapboxgl.NavigationControl());
+
+})();
