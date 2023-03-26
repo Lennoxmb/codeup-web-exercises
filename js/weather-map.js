@@ -140,6 +140,7 @@ function average(array){
 //TODAYS WEATHER FUNCTION
 
 function todaysWeather(location) {
+    console.log(location)
     geocode(location, MAPBOX_API_TOKEN).then(coords => {
         $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1]}&lon=${coords[0]}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
         (data => {
@@ -151,7 +152,15 @@ function todaysWeather(location) {
     });
 }
 
-todaysWeather(location)
+//san antonio location marker
+
+        new mapboxgl.Marker()
+            .setLngLat([-98.4936300, 29.4241200])
+            .addTo(map);
+
+
+todaysWeather('San Antonio, TX')
+
 
 //  FORECAST FUNCTION
 function weatherForecast(location) {
@@ -200,8 +209,10 @@ document.getElementById("zoomSubmit").addEventListener('click', event => {
     })
 
 
-//map click
-let markers = [];
+//map click and clear marker click
+let markers = [new mapboxgl.Marker()
+    .setLngLat([-98.4936300, 29.4241200])
+    .addTo(map)];
 map.on('click', function(e) {
     for (let i = 0; i < markers.length; i++) {
         markers[i].remove();
@@ -210,12 +221,20 @@ map.on('click', function(e) {
         .setLngLat(e.lngLat)
         .addTo(map);
     markers.push(marker);
-});
+    let coordy = (e.lngLat)
 
-//san antonio marker
-new mapboxgl.Marker()
-    .setLngLat([-98.4936300, 29.4241200])
-    .addTo(map);
+
+    $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordy.lat}&lon=${coordy.lng}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
+    (data => {
+        const time = new Date();
+        $('#todaysDate').html(`<p>${daysOfWeek[time.getDay()]}<br>${months[time.getMonth()]}  ${time.getDate()}  ${time.getHours()}:${appendLeadingZeroes(time.getMinutes())}<br> Location: ${data.name}</p>`)
+        $('#weather').html(`<p>Weather: ${data.weather[0].description}<br>Current Temp: ${data.main.temp}<br>Feel like temp: ${data.main.feels_like}</p>`)
+        $('#details').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
+    });
+
+
+
+});
 
 
 //CLEAR MARKERS FUNCTION
@@ -229,9 +248,8 @@ document.querySelector("#searchAddress").addEventListener('click', event=>{
 document.getElementById("setMarkerButton").addEventListener('click', async (event)=>{
     event.preventDefault();
     const address = document.getElementById("setMarker").value;
-    // console.log(address);
     todaysWeather(address);
-    weatherForecast(address)
+    weatherForecast(address);
     let coords = await geocode(address, MAPBOX_API_TOKEN);
     const newMarker = new mapboxgl.Marker()
         .setLngLat(coords)
@@ -246,16 +264,6 @@ document.getElementById("setMarkerButton").addEventListener('click', async (even
         }
         });
     });
-
-
-
-
-// // //CLEAR MARKERS FUNCTION FOR MAP CLICK
-// document.querySelector("#searchAddress").addEventListener('click', event=>{
-//     document.querySelectorAll(".mapboxgl-marker").forEach(svg=>{
-//         svg.style.display = 'none';
-//     })
-// })
 
 
 
