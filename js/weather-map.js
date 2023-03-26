@@ -1,6 +1,46 @@
 (function () {
 
 
+//KONAMI
+        function konami() {
+        let allowedKeys = {
+        13: 'enter',
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down',
+        65: 'a',
+        66: 'b',
+    };
+
+        let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
+
+        let codePosition = 0;
+
+        document.addEventListener('keyup', function(e) {
+        let key = allowedKeys[e.keyCode];
+        let requiredKey = konamiCode[codePosition];
+        if (key === requiredKey) {
+        codePosition++;
+        if (codePosition === konamiCode.length) {
+        playRicky();
+        codePosition = 0;
+    }
+    } else {
+        codePosition = 0;
+    }
+    });
+
+        function playRicky() {
+        let rickroll = document.getElementById('rickroll');
+        rickroll.style.display = 'block';
+        rickroll.play();
+    }
+    }
+
+        konami();
+
+
 
 function appendLeadingZeroes(n){
     if(n <= 9){
