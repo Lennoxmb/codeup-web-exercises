@@ -13,6 +13,7 @@
         66: 'b',
     };
 
+
         let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
 
         let codePosition = 0;
