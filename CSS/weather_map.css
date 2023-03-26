@@ -88,18 +88,20 @@ button {
 .forecast {
     padding: 10px;
     margin: 5px 5px;
-    border: 1px solid black;
-    border-radius: 7px;
+    /*border: 1px solid black;*/
+    /*border-radius: 7px;*/
     max-width: 200px;
     width: 100%;
-    background: rgb(23, 0, 56, 0.5);
-    color: white;
+    background: #009DFC;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1.0) 50%, transparent 100%);
+    color: purple;
 }
 
 #formSearches {
     display: flex;
     flex-direction: row;
 }
+
 
 
 
