@@ -188,6 +188,7 @@ function todaysWeather(location) {
         $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1]}&lon=${coords[0]}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
         (data => {
             const time = new Date();
+            $(`<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`)
             $('#todaysDate').html(`<p>${daysOfWeek[time.getDay()]}<br>${months[time.getMonth()]}  ${time.getDate()}  ${time.getHours()}:${appendLeadingZeroes(time.getMinutes())}<br> Location: ${data.name}</p>`)
             $('#weather').html(`<p>Weather: ${data.weather[0].description}<br>Current Temp: ${data.main.temp}<br>Feel like temp: ${data.main.feels_like}</p>`)
             $('#details').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
@@ -224,7 +225,7 @@ function weatherForecast(location) {
                     fiveDayForecast += `
                             <div class="forecast" id="day${index}">
                               
-                              ${daysOfWeekAbbreviated[time.getDay()]}<br>${dateFromTimeStamp(forecast.dt)}<br>Weather: ${forecast.weather[0].description}<br>Average Temp: ${forecast.main.temp}
+                              ${daysOfWeekAbbreviated[time.getDay()]} ${dateFromTimeStamp(forecast.dt)}<br><br>Weather: ${forecast.weather[0].description}<br>Average Temp: ${forecast.main.temp}
                             </div>
                             `;
                 }
@@ -313,4 +314,6 @@ document.getElementById("setMarkerButton").addEventListener('click', async (even
     //ZOOM IN AND OUT BUTTONS
 map.addControl(new mapboxgl.NavigationControl());
 
+
 })();
+
