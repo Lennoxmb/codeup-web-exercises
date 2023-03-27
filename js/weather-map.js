@@ -1,49 +1,6 @@
 (function () {
 
 
-//KONAMI
-        function konami() {
-        let allowedKeys = {
-        13: 'enter',
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down',
-        65: 'a',
-        66: 'b',
-    };
-
-
-
-
-        let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
-
-        let codePosition = 0;
-
-        document.addEventListener('keyup', function(e) {
-        let key = allowedKeys[e.keyCode];
-        let requiredKey = konamiCode[codePosition];
-        if (key === requiredKey) {
-        codePosition++;
-        if (codePosition === konamiCode.length) {
-        playRicky();
-        codePosition = 0;
-    }
-    } else {
-        codePosition = 0;
-    }
-    });
-
-        function playRicky() {
-        let rickroll = document.getElementById('rickroll');
-        rickroll.style.display = 'block';
-        rickroll.play();
-    }
-    }
-
-        konami();
-
-
 
 function appendLeadingZeroes(n){
     if(n <= 9){
@@ -149,37 +106,6 @@ function average(array){
 }
 
 
-
-
-
-
-// $.get("http://api.openweathermap.org/data/2.5/weather", {
-//     APPID: OPEN_WEATHER_APPID,
-//     q:     "San Antonio, US"
-// }).done(function(data) {
-//     console.log(data);
-// });
-
-
-//
-// document.querySelector(".toggleNight").addEventListener('click', event=>{
-//     event.preventDefault();
-//     // $todaysMoving.css({
-//     //     'color': 'white',
-//     //     'background': 'rgba(0, 0, 0, 0.5);'
-//     // });
-//     mapboxgl.accessToken = MAPBOX_API_TOKEN;
-//     const map = new mapboxgl.Map({
-//         container: 'map', // container ID
-//         style: 'mapbox://styles/mapbox/dark-v11', // style URL
-//         center: [-98.4936300, 29.4241200], // starting position [lng, lat]
-//         zoom: 9, // starting zoom
-//
-//     })
-//
-// })
-
-
 //TODAYS WEATHER FUNCTION
 
 function todaysWeather(location) {
@@ -211,17 +137,10 @@ function weatherForecast(location) {
     geocode(location, MAPBOX_API_TOKEN).then(coords => {
         $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords[1]}&lon=${coords[0]}&appid=${OPEN_WEATHER_APPID}&units=imperial`)
             .done(function (data) {
-            // console.log(data);
-            let fiveDayForecast = '';
+                let fiveDayForecast = '';
             data.list.forEach((forecast, index) => {
                 if (index % 8 === 0 && index !== 0) {
                     const time = new Date(forecast.dt * 1000);
-                    // console.log(time.getHours());
-                    // console.log(time.getTime());
-                    // console.log(time.getDay());
-                    // console.log(forecast.dt_txt);
-                    // console.log(forecast.weather[0].description);
-                    // console.log(forecast.main.temp);
                     fiveDayForecast += `
                             <div class="forecast" id="day${index}">
                               
@@ -235,7 +154,7 @@ function weatherForecast(location) {
     })
 }
 
-weatherForecast(location)
+weatherForecast('San Antonio, TX')
 
 
 
@@ -267,7 +186,6 @@ map.on('click', function(e) {
     markers.push(marker);
     let coordy = (e.lngLat)
 
-
     $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordy.lat}&lon=${coordy.lng}&appid=${OPEN_WEATHER_APPID}&units=imperial`).done
     (data => {
         const time = new Date();
@@ -275,9 +193,22 @@ map.on('click', function(e) {
         $('#weather').html(`<p>Weather: ${data.weather[0].description}<br>Current Temp: ${data.main.temp}<br>Feel like temp: ${data.main.feels_like}</p>`)
         $('#details').html(`<p>Humidity: ${data.main.humidity}<br>Today's High: ${data.main.temp_max}<br>Today's Low: ${data.main.temp_min}</p>`)
     });
-
-
-
+    $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordy.lat}&lon=${coordy.lng}&appid=${OPEN_WEATHER_APPID}&units=imperial`)
+        .done(function (data) {
+            let fiveDayForecast = '';
+            data.list.forEach((forecast, index) => {
+                if (index % 8 === 0 && index !== 0) {
+                    const time = new Date(forecast.dt * 1000);
+                    fiveDayForecast += `
+                            <div class="forecast" id="day${index}">
+                              
+                              ${daysOfWeekAbbreviated[time.getDay()]} ${dateFromTimeStamp(forecast.dt)}<br><br>Weather: ${forecast.weather[0].description}<br>Average Temp: ${forecast.main.temp}
+                            </div>
+                            `;
+                }
+            })
+            $('.fivedayForecastBox').html(fiveDayForecast);
+        });
 });
 
 

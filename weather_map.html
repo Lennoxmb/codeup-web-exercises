@@ -13,12 +13,12 @@
 <body>
   <div class="page-wrapper">
     <div id='map' class="mapbox" style='width: 100%; height: 100vh;'></div><!------- << map -->
-    <div class="container relative"> <!-- top row -->
+    <div class="container coloredTop relative"> <!-- top row -->
       <div class="row topRow">
         <!-- search bar-->
         <form id="searchAddress" class="column justify-center align-center text-center">
           <label class="buttonLabel" for="setMarker">Enter an address:</label>
-          <input type="text" name="setMarker" id="setMarker" value="San Antonio, TX">
+          <input type="text" name="setMarker" id="setMarker" placeholder="Enter Address" ">
           <button id="setMarkerButton">Search Address</button>
 <!--          &lt;!&ndash; toggle button&ndash;&gt;-->
 <!--          <button id="toggleNight" class="relative">Toggle Night Mode</button>-->
@@ -41,7 +41,10 @@
 
     <button id="zoomSubmit"></button> <!--- i need this for my zoom in corner-->
 
-      <div class="container fivedayForecastBox relative" > <!---- container to the 5 day forecast in js-->
+      <div class="container  relative" > <!---- container to the 5 day forecast in js-->
+        <div class="row fivedayForecastBox">
+
+        </div>
     </div>
 
   </div>
