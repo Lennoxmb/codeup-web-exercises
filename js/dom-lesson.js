@@ -35,8 +35,8 @@ let btnColumn = document.querySelector('#btn-column');
 //     pageWrapper.style.background = 'red'
 // })
 // //can go back and toggle off, need to update in css to handle what it looks liek
-// clickMe.addEventListener('click', function(){
-//     pageWrapper.classList.toggle('red')
+clickMe.addEventListener('click', function(){
+    pageWrapper.classList.toggle('red')
 // })
 // let newHTML = '<button class="button">New button</button>';
 //
