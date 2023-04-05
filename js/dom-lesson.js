@@ -82,3 +82,6 @@ let buttonNode = document.createElement('button');
 buttonNode.classList.add('btn');
 buttonNode.innerText = "I am a new button!";
 btnColumn.appendChild(buttonNode)
+
+})
+
